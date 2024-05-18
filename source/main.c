@@ -114,7 +114,7 @@ int* SolveKnapsackProblemBruteForce(struct KnapsackProblemInfo *knapsackProblemI
 int *SolveKnapsackProblemGenetic(struct KnapsackProblemInfo *knapsackProblemInfo){
     int *bestSolution = NULL;
     int *bestOfEachGeneration = malloc(knapsackProblemInfo->numberOfGenerations * sizeof(int));
-    int **population = GenerateRandomPopulation(knapsackProblemInfo->numberOfItems, knapsackProblemInfo->numberOfIndividualsInGeneration);
+    int **population = GenerateRandomPopulation(knapsackProblemInfo->numberOfItems, knapsackProblemInfo->numberOfIndividualsInGeneration, knapsackProblemInfo->randomInitModulo);
     int **newPopulation = malloc(knapsackProblemInfo->numberOfIndividualsInGeneration * sizeof(int *));
     struct ValueAndPosition *resultsOfAllIndividuals = malloc(knapsackProblemInfo->numberOfIndividualsInGeneration * sizeof(struct ValueAndPosition));
     if (resultsOfAllIndividuals == NULL || bestOfEachGeneration == NULL || population == NULL || newPopulation == NULL){

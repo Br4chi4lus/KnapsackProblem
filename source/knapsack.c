@@ -88,25 +88,25 @@ void GetNextSolutionByModifyingCurrent(int *itemsSelection, int numberOfItems){
     }
 }
 
-int *GenerateRandomSelection(int numberOfItems){
+int *GenerateRandomSelection(int numberOfItems, int modulo){
     int *selection = malloc(numberOfItems * sizeof(int));
     if (selection == NULL)
         return NULL;
     for (int i = 0; i < numberOfItems; ++i){
         selection[i] = 0;
-        if (rand() % 100 == 0){
+        if (rand() % modulo == 0){
             selection[i] = 1;
         }
     }
     return selection;
 }
 
-int **GenerateRandomPopulation(int numberOfItems, int numberOfIndividuals){
+int **GenerateRandomPopulation(int numberOfItems, int numberOfIndividuals, int modulo){
     int **population = malloc(numberOfIndividuals * sizeof(int *));
     if (population == NULL)
         return NULL;
     for (int i = 0; i < numberOfIndividuals; ++i){
-        population[i] = GenerateRandomSelection(numberOfItems);
+        population[i] = GenerateRandomSelection(numberOfItems, modulo);
         if (population[i] == NULL){
             for (int j = 0; j < i; ++j){
                 free(population[j]);
